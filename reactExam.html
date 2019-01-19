@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <title>Try react</title>
+</head>
+<body>
+    <div id="root"></div>
+    <div id="rootReact"></div>
+    <div id="rootJSX"></div>
+    <div id="component"></div>
+    <script type="text/javascript">
+        const rootElement = document.getElementById("root")
+        const newElement = document.createElement("div")
+        newElement.textContent = "Hello traditional form"
+        newElement.className = "container"
+        rootElement.appendChild(newElement)
+    </script>
+    <script type="text/javascript">
+        const rootReactElement = document.getElementById("rootReact")
+        const element = React.createElement(
+            'div',
+            {className:"container"},
+            "Hello created by REACT"
+        )
+        console.log(element)
+        ReactDOM.render(element, rootReactElement)
+    </script>
+    <script type="text/babel">
+        const content = "Hello with babel JSX"
+        const myClassName = "container"
+        const elementjsx = document.getElementById("rootJSX")
+        const props = {
+            className:"container",
+            children :"Hello with babelJsx"
+        }
+        //const elementBabel = <div className={myClassName}>{(()=>content)()}</div>
+        const elementBabel = <div {...props}/>
+        
+        ReactDOM.render(elementBabel,elementjsx)
+    </script>
+    <script type="text/babel">
+        const componentHtml = document.getElementById("component")
+        const message = (prop) => <div>{prop.msg}</div>
+        const Message = (prop) => <div>{prop.children}</div>
+        const divElement = (
+            <div className="container">
+                {React.createElement(message,{msg:"Hello I'm a component"})}
+                {message({msg:"I'm a second message"})}
+                <Message children="I'am a third form of msg"/>
+            </div>
+        )
+        ReactDOM.render(divElement, componentHtml)      
+    
+    </script>
+
+    
+</body>
+</html>

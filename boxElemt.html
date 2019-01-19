@@ -1,0 +1,44 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<div id="root"></div>
+
+<style> 
+    .box--small{
+        width: 60px;
+        height: 60px;
+        border-style: solid;
+        border-color: black;
+    
+    }
+</style>
+
+<script  type="text/babel">
+    const props = {
+        className :'box--small',
+        style:{paddingLeft:20}
+    }
+    function  Box({style,...rest}) {
+        return(<div
+            className = "box--small"
+            style = {{paddingLeft:30, ...style}}
+            {...rest}
+        />
+        )
+    }
+
+    const element =(
+        <div>
+            <Box style={{backgroundColor:"lightblue"}}>Small box</Box>
+        
+        
+            <Box style={{backgroundColor:"green"}}>Small box</Box>
+        </div>
+    )
+
+
+    ReactDOM.render(element,document.getElementById("root"))
+
+</script>
