@@ -1,0 +1,45 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script src="https://unpkg.com/vanilla-tilt@1.2.2/lib/vanilla-tilt.js"></script>
+
+<div id="root"></div>
+<style>
+    .tilt-root{
+        height: 150px;
+        background-color: red;
+        width: 200px;
+        background-image: -webkit-linear-gradient(315deg,#fff)
+    }
+</style>
+<script type="text/babel">
+    class Tilt extends React.Component{
+        componentDidMount(){
+            console.log(this.rootNode)
+        }
+        render(){
+            return(
+                <div ref={node =>(this.node = node)} className="tilt-root">
+                    <div className="tilt-child">
+                        <div {...this.props} />
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    
+
+    const element=(
+        <div className="totally-centered">
+            <Tilt>
+                <div className="totally-centered">
+                    vanilla-tilt.js
+                </div>
+            </Tilt>
+        </div>
+    )
+    ReactDOM.render(element, document.getElementById("root"))
+    
+</script>

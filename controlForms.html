@@ -1,0 +1,52 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    class MyFacnyForm extends React.Component{
+        static availableOptions =[
+            'apple',
+            'grape',
+            'cherry',
+            'orange',
+            'pear',
+            'peach'
+        ]
+        handleCommaSeparateChange = event =>{
+            console.log("handleCommaSeparatedChanged")
+        }
+        handleMultilineChange = event =>{
+            console.log("handleMultilineChanged")
+        }
+        handleMultiSelectChange = event =>{
+            console.log("handleMultiSelectChanged")
+        }
+        render(){
+            return(
+                <form>
+                    <div>
+                        <label>
+                            comma separated values:
+                        < br/>
+                        <input
+                            type="text"
+                            onChange={
+                                this.handleCommaSeparateChange
+                            }
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        multiline values:
+                        <br />
+                        <textarea
+                            value={multiline}
+                            rows={
+                                MyFacnyForm.availableOptions.length
+                            }
+            )
+        }
+    }

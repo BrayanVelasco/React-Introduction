@@ -1,0 +1,96 @@
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<div id="root"></div>
+<script type="text/babel">
+    const state = {evenCount: 0, userName:""}
+
+
+    function App() {
+        return(
+            <div>
+                <p>
+                    There have been {state.evenCount} events
+                </p>
+                <p>
+                    <button onClick={increment}>PRESS</button>
+                </p>
+                <p>
+                    You typed:{state.userName}
+                </p>
+                <p>
+                    <input onChange={changeUser}/>
+                </p>
+            </div>
+        )
+    }
+    function changeUser(event){
+        setState({
+            userName:event.target.value,
+        })
+    }
+
+    function increment(){
+        setState({
+            evenCount: state.evenCount +1 
+            })
+    }
+    
+    function setState(newState){
+        Object.assign(state, newState)
+        renderApp()
+    }
+    setState({evenCount: 10})
+
+    function renderApp(){
+        ReactDOM.render(
+            <App/>,
+            document.getElementById("root")
+
+        )
+    }
+    renderApp()
+
+</script>
+
+
+
+<div id="toogle">
+
+</div>
+
+<script type="text/babel">
+    class Toggle extends React.Component {
+        constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+        this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Toggle />,
+  document.getElementById('toogle')
+);
+
+
+
+</script>
